@@ -1,4 +1,5 @@
-if SHIELD_LDKSKEL_LEFT 
+if SHIELD_LDKSKEL_LEFT
+
 config ZMK_KEYBOARD_NAME 
   default "ldkskel"
 
