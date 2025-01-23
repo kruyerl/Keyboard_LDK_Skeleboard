@@ -17,6 +17,7 @@
 
 / {
   macros {
+    // Spotlight
     spotlight: spotlight {
       compatible = "zmk,behavior-macro";
       #binding-cells = <0>;
@@ -24,16 +25,17 @@
     };
 
     // Emoji
-    mac_emoji: mac_emoji {
-      compatible = "zmk,behavior-macro";
-      #binding-cells = <0>;
-      bindings = <&macro_press &kp LGUI>, <&macro_press &kp LCTRL>, <&macro_tap &kp SPACE>, <&macro_release &kp LCTRL>, <&macro_release &kp LGUI>; 
-    };
-
     windows_emoji: windows_emoji {
       compatible = "zmk,behavior-macro";
       #binding-cells = <0>;
       bindings = <&macro_press &kp LGUI>, <&macro_tap &kp DOT>, <&macro_release &kp LGUI>; 
+    };
+
+    // Win + Tab
+    win_tab: win_tab {
+      compatible = "zmk,behavior-macro";
+      #binding = <0>;
+      bindings = <&macro_press &kp LGUI>, <&macro_tap &kp TAB>, <&macro_release &kp LGUI>;
     };
   };
 
