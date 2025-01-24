@@ -68,13 +68,6 @@
       bindings = <&kp>, <&kp>;
     };
 
-    td_multi_mac: tap_dance_multi_mac {
-      compatible = "zmk,behavior-tap-dance";
-      #binding-cells = <0>;
-      tapping-term-ms = <200>;
-      bindings = <&sm ESC LALT>, <&spotlight>, <&kp LCTRL>, <&mac_emoji>;
-    };
-
     td_multi_windows: tap_dance_multi_windows {
       compatible = "zmk,behavior-tap-dance";
       #binding-cells = <0>;
@@ -86,7 +79,7 @@
   keymap {
     compatible = "zmk,keymap";
 
-    mac_default_layer {
+    base_layer {
       display-name = "Base";
       bindings = <
         &kp Q     &kp W     &kp E     &kp R     &kp T     &kp Y     &kp U     &kp I     &kp O     &kp P
@@ -97,7 +90,7 @@
       >;
     };
 
-    windows_default_layer {
+    number_layer {
       display-name = "Numbers";
       bindings = <
         &kp Q     &kp W     &kp E     &kp R     &kp T     &kp Y     &kp U     &kp I     &kp O     &kp P
@@ -108,7 +101,7 @@
 
     };
 
-    gaming_layer {
+    symbols_layer {
       display-name = "Symbols";
       bindings = <
         &kp Q     &kp W     &kp E     &kp R     &kp T     &kp Y     &kp U     &kp I     &kp O     &kp P
@@ -119,7 +112,7 @@
 
     };
 
-    code_layer {
+    system_layer {
       display-name = "System";
       bindings = <
         &kp Q     &kp W     &kp E     &kp R     &kp T     &kp Y     &kp U     &kp I     &kp O     &kp P
@@ -129,7 +122,7 @@
       >;
     };
 
-    number_layer {
+    gaming_layer {
       display-name = "Gaming";
       bindings = <
         &kp Q     &kp W     &kp E     &kp R     &kp T     &kp Y     &kp U     &kp I     &kp O     &kp P
@@ -139,7 +132,7 @@
       >;
     };
 
-    function_layer {
+    lock_layer {
       display-name = "Lock";
       bindings = <
         &kp Q     &kp W     &kp E     &kp R     &kp T     &kp Y     &kp U     &kp I     &kp O     &kp P
