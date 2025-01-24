@@ -33,7 +33,7 @@
     compatible = "zmk,physical-layout";
     display-name = "5 Column";
 
-    transform = <&matrix_transform>;
+    transform = <&transform>;
     kscan = <&kscan>;
 
     keys  //                 w   h    x    y     rot    rx    ry
