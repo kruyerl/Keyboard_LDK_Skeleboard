@@ -1,5 +1,12 @@
 #define ZMK_POINTING_DEFAULT_MOVE_VAL 1500  // default: 600
 #define ZMK_POINTING_DEFAULT_SCRL_VAL 20    // default: 10
+#define COMBO(NAME, BINDINGS, KEYPOS) \
+combo_##NAME { \
+timeout-ms = <50>; \
+bindings = <BINDINGS>; \
+key-positions = <KEYPOS>; \
+layers = <0>; \
+};
 
 #include <behaviors.dtsi>
 #include <dt-bindings/zmk/keys.h>
@@ -11,7 +18,7 @@
 #define SYMBOLS 2
 #define SYSTEM 3
 #define GAMING 4
-#define LOCK 5
+#define KEYBOARD 5
 
 // Behavior Overrides
 &lt {
@@ -33,16 +40,52 @@
       #binding-cells = <0>;
       bindings = <&macro_press &kp LGUI>, <&macro_tap &kp TAB>, <&macro_release &kp LGUI>;
     };
+    // Vim Exit
+    vim_exit: vim_exit {
+      compatible = "zmk,behavior-macro";
+      #binding-cells = <0>;
+      bindings = <&macro_tap     &kp COLON &kp Q>
+    };
+    // Vim Write
+    vim_write: vim_write {
+      compatible = "zmk,behavior-macro";
+      #binding-cells = <0>;
+      bindings = <&macro_tap     &kp COLON &kp W>
+    };
+  };
+
+  conditional_layers {
+    compatible = "zmk,conditional-layers";
+    tri_layer {
+      if-layers = <1 2>;
+      then-layer = <3>;
+    };
+  };
+
+  combos {
+    compatible = "zmk,combos";
+
+    COMBO(escape,&kp ESC ,0 1)
+    COMBO(tab,&kp TAB ,1 2)
+    COMBO(vim_quit,&vim_quit,25 26)
+    COMBO(vim_write,&vim_write,26 27)
+    COMBO(to_layer,&to 4,31 32 33 34)
   };
 
   behaviors {
-    hm: homerow_mods {
-      compatible = "zmk,behavior-hold-tap";
-      #binding-cells = <2>;
-      tapping-term-ms = <150>;
-      quick-tap-ms = <0>;
-      flavor = "tap-preferred";
-      bindings = <&kp>, <&kp>;
+    hm: homerow_mods {  
+    compatible = "zmk,behavior-hold-tap";
+    #binding-cells = <2>;
+    tapping-term-ms = <150>;
+    quick-tap-ms = <0>;
+    flavor = "tap-preferred";
+    bindings = <&kp>, <&kp>;
+    };
+    td_g0: tap_dance_gaming_0 {
+        compatible = "zmk,behavior-tap-dance";
+        #binding-cells = <0>;
+        tapping-term-ms = <200>;
+        bindings = <&kp N1>, <&kp N2>, <&kp N3>;
     };
   };
 
@@ -67,7 +110,7 @@
         &kp N1      &kp N2      &kp N3      &kp  N4     &kp N5      &kp N6          &kp N7          &kp N8            &kp N9          &kp N0
         &sk LSHIFT  &sk LCTRL   &sk LALT    &sk LGUI    &mkp MB1    &kp LEFT        &kp DOWN        &kp UP            &kp RIGHT       &msc SCRL_UP
         &kp ESC     &kp CAPS    &kp PSCRN   &mkp MB2    &mkp MB3    &mmv MOVE_LEFT  &mmv MOVE_DOWN  &mmv MOVE_UP      &mmv MOVE_RIGHT &msc SCRL_DOWN
-        &trns       &trns       &trns       &mo 3       &trns       &trns
+        &trns       &trns       &trns       &trns       &trns       &trns
       >;
 
     };
@@ -75,10 +118,10 @@
     symbols_layer {
       display-name = "Symbols";
       bindings = <
-        &kp EXCL     &kp QMARK    &kp SQT    &kp DQT     &kp GRAVE      &kp CARET     &kp AMPS      &kp TILDE     &kp UNDER     &kp PIPE
-        &kp LPAR     &kp LBKT     &kp LT      &kp LBRC     &kp COLON    &kp EQUAL     &kp PLUS      &kp MINUS     &kp STAR     &kp FSLH
-        &kp RPAR     &kp RBKT     &kp GT      &kp RBRC     &kp SEMI     &kp AT        &kp POUND     &kp DLLR     &kp PRCNT     &kp BSLH
-        &trns     &trns     &mo 3     &trns     &trns     &trns
+        &kp EXCL     &kp QMARK    &kp SQT     &kp DQT     &kp GRAVE      &kp CARET     &kp AMPS      &kp TILDE     &kp UNDER     &kp PIPE
+        &kp LPAR     &kp LBKT     &kp LT      &kp LBRC    &kp COLON      &kp EQUAL     &kp PLUS      &kp MINUS     &kp STAR     &kp FSLH
+        &kp RPAR     &kp RBKT     &kp GT      &kp RBRC    &kp SEMI       &kp AT        &kp POUND     &kp DLLR     &kp PRCNT     &kp BSLH
+        &trns        &trns        &trns       &trns       &trns          &trns
       >;
 
     };
@@ -87,30 +130,31 @@
       display-name = "System";
       bindings = <
         &kp F1      &kp F2        &kp F3        &kp F4      &kp F5     &kp F6       &kp F7        &kp F8        &kp F9      &kp F0
-        &sk LSHIFT  &sk LCTRL     &sk LALT      &sk LGUI    &kp C_PP   &bt BT_SEL 1 &bt BT_SEL 2  &bt BT_SEL 3  &kp F11     &kp F12
+        &sk LSHIFT  &sk LCTRL     &sk LALT      &sk LGUI    &kp C_PP   &kp SLCK     &kp KP_NUM    &kp C_RESET   &kp F11     &kp F12
         &kp C_MUTE  &kp C_VOL_DN  &kp C_VOL_UP  &kp C_PREV  &kp C_NEXT &kp HOME     &kp PG_DN     &kp PG_UP     &kp END     &kp INSERT
-        &trns     &trns     &trns     &trns     &trns     &trns
+        &trns       &to 4     &trns     &trns     &to 5     &trns
       >;
     };
 
     gaming_layer {
       display-name = "Gaming";
       bindings = <
-        &kp Q     &kp W     &kp E     &kp R     &kp T     &kp Y     &kp U     &kp I     &kp O     &kp P
-        &kp Q     &kp W     &kp E     &kp R     &kp T     &kp Y     &kp U     &kp I     &kp O     &kp P
-        &kp Q     &kp W     &kp E     &kp R     &kp T     &kp Y     &kp U     &kp I     &kp O     &kp P
-        &kp 1     &kp W     &kp E     &kp R     &kp T     &kp Y
+        &td_g0     &kp Q     &kp W     &kp E     &kp R     &kp T     &kp Y     &kp U     &kp N1     &kp N2
+        &kp LSHIFT &kp A     &kp S     &kp D     &kp F     &kp G     &kp H     &kp J     &kp N3     &kp N4
+        &kp LCTRL  &kp Z     &kp X     &kp C     &kp V     &kp B     &kp N     &kp M     &kp N5     &kp N6
+        &trns      &kp SPACE     &kp M     &kp ESC     &to 0     &trns
       >;
     };
 
-    lock_layer {
-      display-name = "Lock";
+    keyboard_layer {
+      display-name = "Keyboard";
       bindings = <
-        &kp Q     &kp W     &kp E     &kp R     &kp T     &kp Y     &kp U     &kp I     &kp O     &kp P
-        &kp Q     &kp W     &kp E     &kp R     &kp T     &kp Y     &kp U     &kp I     &kp O     &kp P
-        &kp Q     &kp W     &kp E     &kp R     &kp T     &kp Y     &kp U     &kp I     &kp O     &kp P
-        &kp 1     &kp W     &kp E     &kp R     &kp T     &kp Y
+        &bt BT_SEL 1    &bt BT_SEL 2  &bt BT_SEL 3  &bt BT_SEL 4  &bt BT_SEL 5      &none &none &none &none &none 
+        &bt BT_CLR_ALL  &bt BT_CLR    &bt BT_PRV    &bt BT_NXT    &none             &none &none &none &none &none 
+        &none           &none         &none         &none         &none             &none &none &none &none &none 
+        &trns           &trns         &trns         &trns         &to 0             &trns
       >;
     };
   };
 };
+
