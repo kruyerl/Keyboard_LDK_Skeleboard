@@ -23,24 +23,16 @@
       #binding-cells = <0>;
       bindings = <&macro_press &kp LGUI>, <&macro_tap &kp SPACE>, <&macro_release &kp LGUI>; 
     };
-
-    // Emoji
-    windows_emoji: windows_emoji {
-      compatible = "zmk,behavior-macro";
-      #binding-cells = <0>;
-      bindings = <&macro_press &kp LGUI>, <&macro_tap &kp DOT>, <&macro_release &kp LGUI>; 
-    };
-
     // Win + Tab
     win_tab: win_tab {
       compatible = "zmk,behavior-macro";
-      #binding = <0>;
+      #binding-cells = <0>;
       bindings = <&macro_press &kp LGUI>, <&macro_tap &kp TAB>, <&macro_release &kp LGUI>;
     };
   };
 
 
-
+  
   keymap {
     compatible = "zmk,keymap";
 
@@ -50,7 +42,8 @@
         &kp Q     &kp W     &kp E     &kp R     &kp T     &kp Y     &kp U     &kp I     &kp O     &kp P
         &kp A     &kp S     &kp D     &kp F     &kp G     &kp H     &kp J     &kp K     &kp L     &kp BSPC
         &kp Z     &kp X     &kp C     &kp V     &kp B     &kp N     &kp M     &kp COMMA     &kp DOT     &kp DEL 
-        &kp UP    &kp SPACE &lt 1 TAB  &lt 2 ESC   &kp ENTER &kp DOWN
+        &win_tab  &kp SPACE &lt 1 TAB  &lt 2 ESC   &kp ENTER &spotlight
+
 
       >;
     };
