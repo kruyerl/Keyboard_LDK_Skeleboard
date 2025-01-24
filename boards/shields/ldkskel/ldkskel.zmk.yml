@@ -1,0 +1,13 @@
+file_format: "1"
+id: ldkskel
+name: ldkskel
+type: shield
+url: 
+requires: [pro_micro]
+exposes: [i2c_oled]
+features:
+  - keys
+  - studio
+siblings:
+  - ldkskel_left
+  - ldkskel_right
