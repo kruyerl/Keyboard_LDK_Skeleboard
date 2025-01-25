@@ -1,8 +1,4 @@
-#include "ldkskel.dtsi"
-
-&transform {
-    col-offset = <5>;
-};
+#include "ldk_skeleboard.dtsi"
 
 &kscan {
     col-gpios = <&pro_micro 4 GPIO_ACTIVE_HIGH>,

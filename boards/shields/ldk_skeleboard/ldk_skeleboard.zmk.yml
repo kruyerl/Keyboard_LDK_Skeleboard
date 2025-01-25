@@ -1,6 +1,6 @@
 file_format: "1"
-id: ldkskel
-name: ldkskel
+id: ldk_skeleboard
+name: ldk_skeleboard
 type: shield
 url: 
 requires: [pro_micro]
@@ -9,5 +9,5 @@ features:
   - keys
   - studio
 siblings:
-  - ldkskel_left
-  - ldkskel_right
+  - ldk_skeleboard_left
+  - ldk_skeleboard_right

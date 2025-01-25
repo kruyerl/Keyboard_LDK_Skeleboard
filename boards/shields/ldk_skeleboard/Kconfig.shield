@@ -1,0 +1,6 @@
+config SHIELD_LDK_SKELEBOARD_LEFT
+    def_bool $(shields_list_contains,ldk_skeleboard_left)
+
+config SHIELD_LDK_SKELEBOARD_RIGHT
+    def_bool $(shields_list_contains,ldk_skeleboard_right)
+    
