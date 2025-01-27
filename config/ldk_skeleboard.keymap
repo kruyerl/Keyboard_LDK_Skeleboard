@@ -48,13 +48,13 @@ combo_##NAME { \
     vim_exit: vim_exit {
       compatible = "zmk,behavior-macro";
       #binding-cells = <0>;
-      bindings = <&macro_tap     &kp COLON &kp Q>
+      bindings = <&macro_tap     &kp COLON &kp Q>;
     };
     // Vim Write
     vim_write: vim_write {
       compatible = "zmk,behavior-macro";
       #binding-cells = <0>;
-      bindings = <&macro_tap     &kp COLON &kp W>
+      bindings = <&macro_tap     &kp COLON &kp W>;
     };
   };
 
