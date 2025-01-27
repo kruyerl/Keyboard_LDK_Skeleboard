@@ -145,7 +145,7 @@ combo_##NAME { \
     system_layer {
       display-name = "System";
       bindings = <
-        &kp F1      &kp F2        &kp F3        &kp F4      &kp F5     &kp F6       &kp F7        &kp F8        &kp F9      &kp F0
+        &kp F1      &kp F2        &kp F3        &kp F4      &kp F5     &kp F6       &kp F7        &kp F8        &kp F9      &kp F10
         &sk LSHIFT  &sk LCTRL     &sk LALT      &sk LGUI    &kp C_PP   &kp SLCK     &kp KP_NUM    &kp C_RESET   &kp F11     &kp F12
         &kp C_MUTE  &kp C_VOL_DN  &kp C_VOL_UP  &kp C_PREV  &kp C_NEXT &kp HOME     &kp PG_DN     &kp PG_UP     &kp END     &kp INSERT
         &trns       &to 4     &trns     &trns     &to 5     &trns
