@@ -79,7 +79,7 @@ combo_##NAME { \
     COMBO(escape1,&kp ESC, 1 2)
     COMBO(escape2,&kp ESC,7 8)
     COMBO(tab,&kp TAB,2 3)
-    COMBO(vim_quit,&vim_quit,25 26)
+    COMBO(vim_exit,&vim_exit,25 26)
     COMBO(vim_write,&vim_write,26 27)
   };
 
