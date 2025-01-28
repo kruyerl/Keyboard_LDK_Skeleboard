@@ -1,3 +1,8 @@
+#include <behaviors.dtsi>
+#include <dt-bindings/zmk/keys.h>
+#include <dt-bindings/zmk/bt.h>
+#include <dt-bindings/zmk/pointing.h>
+
 #define ZMK_POINTING_DEFAULT_MOVE_VAL 1500  // default: 600
 #define ZMK_POINTING_DEFAULT_SCRL_VAL 20    // default: 10
 #define COMBO(NAME, BINDINGS, KEYPOS) \
@@ -7,11 +12,6 @@ combo_##NAME { \
     key-positions = <KEYPOS>; \
     layers = <0>; \
 };
-
-#include <behaviors.dtsi>
-#include <dt-bindings/zmk/keys.h>
-#include <dt-bindings/zmk/bt.h>
-#include <dt-bindings/zmk/pointing.h>
 
 #define BASE 0
 #define NUMBERS 1
@@ -113,7 +113,12 @@ ent: enter_mods {
       tapping-term-ms = <200>;
       bindings = <&mkp MB1>, <&mkp MB2>, <&mkp MB3>;
     };
-
+    td_s0: tap_dance_system_0 {
+      compatible = "zmk,behavior-tap-dance";
+      #binding-cells = <0>;
+      tapping-term-ms = <200>;
+      bindings = <&win_tab>, <&sl 5>;
+    };
   };
 
   keymap {
@@ -125,7 +130,7 @@ ent: enter_mods {
         &kp Q         &kp W         &kp E       &kp R       &kp T     &kp Y     &kp U       &kp I       &kp O       &kp P
         &hm LSHIFT A  &hm LCTRL S   &hm LALT D  &hm LGUI F  &kp G     &kp H     &hm RGUI J  &hm RALT K  &hm RCTRL L &hm RSHIFT BSPC
         &kp Z         &kp X         &kp C       &kp V       &kp B     &kp N     &kp M       &kp COMMA   &kp DOT     &kp DEL 
-        &win_tab      &kp SPACE     &lt 1 TAB   &lt 2 ESC   &ent LSHIFT ENTER   &spotlight
+        &td_s0        &kp SPACE     &lt 1 TAB   &lt 2 ESC   &ent LSHIFT ENTER   &spotlight
       >;
     };
 
