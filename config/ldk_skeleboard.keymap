@@ -94,6 +94,7 @@ combo_##NAME { \
     //        30 31 32		33 34 35
 
     COMBO(to_layer,&to 4,31 32 33 34)
+    COMBO(escape0,&kp ESC, 0 1)
     COMBO(escape1,&kp ESC, 1 2)
     COMBO(escape2,&kp ESC,7 8)
     COMBO(tab1,&kp TAB,2 3)
