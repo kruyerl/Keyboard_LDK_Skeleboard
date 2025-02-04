@@ -199,10 +199,10 @@ combo_##NAME { \
     single_layer {
       display-name = "Single";
       bindings = <
-        &kp ESC &spotlight &alt_tab &win_tab &ctrl_alt_del          &ctrl_alt_del &win_tab &alt_tab &spotlight &kp ESC
-        &kp ENTER &kp LEFT &kp DOWN &kp UP &kp RIGHT                &kp LEFT &kp DOWN &kp UP &kp RIGHT &kp ENTER  
-        &kp C_MUTE &kp C_VOL_DN &kp C_VOL_UP &kp BSPC &kp DEL       &kp DEL &kp BSPC &kp C_VOL_UP &kp C_VOL_DN &kp C_MUTE
-        &trans &trans &trans                                        &trans &trans &trans  
+        &kp ESC     &spotlight    &kp UP        &win_tab    &ctrl_alt_del       &ctrl_alt_del &win_tab    &kp UP        &spotlight      &kp ESC
+        &alt_tab    &kp LEFT      &kp DOWN      &kp RIGHT   &kp ENTER           &kp ENTER     &kp LEFT    &kp DOWN      &kp RIGHT       &alt_tab  
+        &kp C_MUTE  &kp C_VOL_DN  &kp C_VOL_UP  &kp BSPC    &kp DEL             &kp DEL       &kp BSPC    &kp C_VOL_UP  &kp C_VOL_DN    &kp C_MUTE
+        &trans &trans &trans                                                    &trans &trans &trans  
       >;
     };
   };
