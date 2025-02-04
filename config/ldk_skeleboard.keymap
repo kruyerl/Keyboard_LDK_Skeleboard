@@ -20,6 +20,7 @@ combo_##NAME { \
 #define SYSTEM 3
 #define GAMING 4
 #define KEYBOARD 5
+#define SINGLE 6
 
 // Behavior Overrides
 &lt {
@@ -122,7 +123,14 @@ combo_##NAME { \
       flavor = "hold-preferred";
       bindings = <&kp>, <&kp>;
     };
-
+    single_mod: single_mod {  
+      compatible = "zmk,behavior-hold-tap";
+      #binding-cells = <2>;
+      tapping-term-ms = <200>;
+      quick-tap-ms = <0>;
+      flavor = "hold-preferred";
+      bindings = <&lt>, <&>;
+    };
     td_g0: tap_dance_gaming_0 {
       compatible = "zmk,behavior-tap-dance";
       #binding-cells = <0>;
@@ -135,20 +143,6 @@ combo_##NAME { \
       tapping-term-ms = <200>;
       bindings = <&mkp MB1>, <&mkp MB2>, <&mkp MB3>;
     };
-    td_s0: tap_dance_system_0 {
-      compatible = "zmk,behavior-tap-dance";
-      #binding-cells = <0>;
-      tapping-term-ms = <200>;
-      bindings = <&alt_tab>, <&win_tab>;
-
-    };
-    td_s1: tap_dance_system_1 {
-      compatible = "zmk,behavior-tap-dance";
-      #binding-cells = <0>;
-      tapping-term-ms = <200>;
-      bindings = <&spotlight>, <&sl 5>;
-    };
-
   };
 
   keymap {
@@ -160,7 +154,7 @@ combo_##NAME { \
         &kp Q         &kp W         &kp E       &kp R       &kp T     &kp Y     &kp U       &kp I       &kp O       &kp P
         &hm LSHIFT A  &hm LCTRL S   &hm LALT D  &hm LGUI F  &kp G     &kp H     &hm RGUI J  &hm RALT K  &hm RCTRL L &hm RSHIFT BSPC
         &kp Z         &kp X         &kp C       &kp V       &kp B     &kp N     &kp M       &kp COMMA   &kp DOT     &kp DEL 
-        &td_s0        &kp SPACE     &lt 1 TAB   &lt 2 ESC   &ent LSHIFT ENTER   &td_s1
+        &single_mod 6 win_tab    &kp SPACE     &lt 1 TAB   &lt 2 ESC   &ent LSHIFT ENTER   &single_mod 6 spotlight
       > ;
     };
 
@@ -215,6 +209,17 @@ combo_##NAME { \
         &trans          &trans          &trans        &trans        &to 0             &trans
       >;
     };
+    single_layer {
+      display-name = "Single";
+      bindings = <
+        &kp T &kp E &kp S &kp T &none &none &none &none &none &none 
+        &none &none &none &none &none &none &none &none &none &none 
+        &none &none &none &none &none &none &none &none &none &none 
+        &none &none &none &none &none &none  
+      >;
+    };
+    
+
   };
 };
 
