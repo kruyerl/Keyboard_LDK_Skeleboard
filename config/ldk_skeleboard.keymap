@@ -123,14 +123,6 @@ combo_##NAME { \
       flavor = "hold-preferred";
       bindings = <&kp>, <&kp>;
     };
-    single_mod: single_mod {  
-      compatible = "zmk,behavior-hold-tap";
-      #binding-cells = <2>;
-      tapping-term-ms = <200>;
-      quick-tap-ms = <0>;
-      flavor = "hold-preferred";
-      bindings = <&lt>, <&>;
-    };
     td_g0: tap_dance_gaming_0 {
       compatible = "zmk,behavior-tap-dance";
       #binding-cells = <0>;
@@ -154,10 +146,9 @@ combo_##NAME { \
         &kp Q         &kp W         &kp E       &kp R       &kp T     &kp Y     &kp U       &kp I       &kp O       &kp P
         &hm LSHIFT A  &hm LCTRL S   &hm LALT D  &hm LGUI F  &kp G     &kp H     &hm RGUI J  &hm RALT K  &hm RCTRL L &hm RSHIFT BSPC
         &kp Z         &kp X         &kp C       &kp V       &kp B     &kp N     &kp M       &kp COMMA   &kp DOT     &kp DEL 
-        &single_mod 6 win_tab    &kp SPACE     &lt 1 TAB   &lt 2 ESC   &ent LSHIFT ENTER   &single_mod 6 spotlight
+        &mo 6         &kp SPACE     &lt 1 TAB   &lt 2 ESC   &ent LSHIFT ENTER   &mo 6
       > ;
     };
-
     number_layer {
       display-name = "Numbers";
       bindings = <
@@ -168,7 +159,6 @@ combo_##NAME { \
       >;
 
     };
-
     symbols_layer {
       display-name = "Symbols";
       bindings = <
@@ -179,7 +169,6 @@ combo_##NAME { \
       >;
 
     };
-
     system_layer {
       display-name = "System";
       bindings = <
@@ -189,7 +178,6 @@ combo_##NAME { \
         &trans      &to 4         &trans        &trans      &to 5      &trans
       >;
     };
-
     gaming_layer {
       display-name = "Gaming";
       bindings = <
@@ -199,7 +187,6 @@ combo_##NAME { \
         &kp TAB    &kp SPACE &kp M     &kp ESC   &to 0     &trans
       >;
     };
-
     keyboard_layer {
       display-name = "Keyboard";
       bindings = <
@@ -212,14 +199,12 @@ combo_##NAME { \
     single_layer {
       display-name = "Single";
       bindings = <
-        &kp T &kp E &kp S &kp T &none &none &none &none &none &none 
-        &none &none &none &none &none &none &none &none &none &none 
-        &none &none &none &none &none &none &none &none &none &none 
-        &none &none &none &none &none &none  
+        &kp ESC &spotlight &alt_tab &win_tab &ctrl_alt_del          &ctrl_alt_del &win_tab &alt_tab &spotlight &kp ESC
+        &kp ENTER &kp LEFT &kp DOWN &kp UP &kp RIGHT                &kp LEFT &kp DOWN &kp UP &kp RIGHT &kp ENTER  
+        &kp C_MUTE &kp C_VOL_DN &kp C_VOL_UP &kp BSPC &kp DEL       &kp C_MUTE &kp C_VOL_DN &kp C_VOL_UP &kp BSPC &kp DEL
+        &trans &trans &trans                                        &trans &trans &trans  
       >;
     };
-    
-
   };
 };
 
