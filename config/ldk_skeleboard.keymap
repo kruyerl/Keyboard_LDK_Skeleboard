@@ -199,9 +199,9 @@ combo_##NAME { \
     single_layer {
       display-name = "Single";
       bindings = <
-        &kp ESC     &spotlight    &kp UP        &win_tab    &ctrl_alt_del       &ctrl_alt_del &win_tab    &kp UP        &spotlight      &kp ESC
-        &alt_tab    &kp LEFT      &kp DOWN      &kp RIGHT   &kp ENTER           &kp ENTER     &kp LEFT    &kp DOWN      &kp RIGHT       &alt_tab  
-        &kp C_MUTE  &kp C_VOL_DN  &kp C_VOL_UP  &kp BSPC    &kp DEL             &kp DEL       &kp BSPC    &kp C_VOL_UP  &kp C_VOL_DN    &kp C_MUTE
+        &kp ESC     &spotlight    &kp UP        &win_tab    &ctrl_alt_del       &bt BT_SEL 1  &bt BT_SEL 2  &bt BT_SEL 3  &bt BT_SEL 4  &bt BT_SEL 5
+        &alt_tab    &kp LEFT      &kp DOWN      &kp RIGHT   &kp ENTER           &trans &trans &trans &trans &trans   
+        &kp C_MUTE  &kp C_VOL_DN  &kp C_VOL_UP  &kp BSPC    &kp DEL             &trans &trans &trans  &trans &trans 
         &trans &trans &trans                                                    &trans &trans &trans  
       >;
     };
