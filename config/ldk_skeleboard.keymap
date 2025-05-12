@@ -6,10 +6,10 @@
 
 #define COMBO(NAME, BINDINGS, KEYPOS) \
 combo_##NAME { \
-    timeout-ms = <50>; \
-    bindings = <BINDINGS>; \
-    key-positions = <KEYPOS>; \
-    layers = <0>; \
+timeout-ms = <50>; \
+bindings = <BINDINGS>; \
+key-positions = <KEYPOS>; \
+layers = <0>; \
 };
 
 #define BASE 0
@@ -44,7 +44,7 @@ combo_##NAME { \
       #binding-cells = <0>;
       bindings = <&macro_press &kp LALT>, <&macro_tap &kp TAB>, <&macro_release &kp LALT>;
     };
-// Ctrl + Alt + Del
+    // Ctrl + Alt + Del
     ctrl_alt_del: ctrl_alt_del {
       compatible = "zmk,behavior-macro";
       #binding-cells = <0>;
@@ -105,21 +105,21 @@ combo_##NAME { \
 
   behaviors {
     hm: homerow_mods {  
-      compatible = "zmk,behavior-hold-tap";
-      #binding-cells = <2>;
-      tapping-term-ms = <400>;
-      require-prior-idle-ms = <125>;
-      quick-tap-ms = <300>;
-      flavor = "hold-preferred";
-      bindings = <&kp>, <&kp>;
+    compatible = "zmk,behavior-hold-tap";
+    #binding-cells = <2>;
+    tapping-term-ms = <400>;
+    require-prior-idle-ms = <125>;
+    quick-tap-ms = <300>;
+    flavor = "hold-preferred";
+    bindings = <&kp>, <&kp>;
     };
     ent: enter_mods {  
-      compatible = "zmk,behavior-hold-tap";
-      #binding-cells = <2>;
-      tapping-term-ms = <200>;
-      quick-tap-ms = <0>;
-      flavor = "hold-preferred";
-      bindings = <&kp>, <&kp>;
+    compatible = "zmk,behavior-hold-tap";
+    #binding-cells = <2>;
+    tapping-term-ms = <200>;
+    quick-tap-ms = <0>;
+    flavor = "hold-preferred";
+    bindings = <&kp>, <&kp>;
     };
     td_g0: tap_dance_gaming_0 {
       compatible = "zmk,behavior-tap-dance";
@@ -127,12 +127,14 @@ combo_##NAME { \
       tapping-term-ms = <200>;
       bindings = <&kp N1>, <&kp N2>, <&kp N3>;
     };
+
     td_mouse0: tap_dance_mouse_0 {
       compatible = "zmk,behavior-tap-dance";
       #binding-cells = <0>;
       tapping-term-ms = <200>;
-      bindings = <&mkp MOUSE_BUTTON_1 &mkp MOUSE_BUTTON_2 &mkp MOUSE_BUTTON_3>;
+      bindings = <&mkp MOUSE_BUTTON_1>, <&mkp MOUSE_BUTTON_2>, <&mkp MOUSE_BUTTON_3>;
     };
+
   };
 
   keymap {
