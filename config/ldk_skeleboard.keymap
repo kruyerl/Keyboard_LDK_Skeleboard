@@ -4,12 +4,14 @@
 #include <dt-bindings/zmk/pointing.h>
 #include <behaviors/mouse_keys.dtsi>
 
+// #define ZMK_POINTING_DEFAULT_MOVE_VAL 1500  // default: 600
+// #define ZMK_POINTING_DEFAULT_SCRL_VAL 20    // default: 10
 #define COMBO(NAME, BINDINGS, KEYPOS) \
 combo_##NAME { \
-timeout-ms = <50>; \
-bindings = <BINDINGS>; \
-key-positions = <KEYPOS>; \
-layers = <0>; \
+    timeout-ms = <50>; \
+    bindings = <BINDINGS>; \
+    key-positions = <KEYPOS>; \
+    layers = <0>; \
 };
 
 #define BASE 0
@@ -44,7 +46,7 @@ layers = <0>; \
       #binding-cells = <0>;
       bindings = <&macro_press &kp LALT>, <&macro_tap &kp TAB>, <&macro_release &kp LALT>;
     };
-    // Ctrl + Alt + Del
+// Ctrl + Alt + Del
     ctrl_alt_del: ctrl_alt_del {
       compatible = "zmk,behavior-macro";
       #binding-cells = <0>;
@@ -105,21 +107,21 @@ layers = <0>; \
 
   behaviors {
     hm: homerow_mods {  
-    compatible = "zmk,behavior-hold-tap";
-    #binding-cells = <2>;
-    tapping-term-ms = <400>;
-    require-prior-idle-ms = <125>;
-    quick-tap-ms = <300>;
-    flavor = "hold-preferred";
-    bindings = <&kp>, <&kp>;
+      compatible = "zmk,behavior-hold-tap";
+      #binding-cells = <2>;
+      tapping-term-ms = <400>;
+      require-prior-idle-ms = <125>;
+      quick-tap-ms = <300>;
+      flavor = "hold-preferred";
+      bindings = <&kp>, <&kp>;
     };
     ent: enter_mods {  
-    compatible = "zmk,behavior-hold-tap";
-    #binding-cells = <2>;
-    tapping-term-ms = <200>;
-    quick-tap-ms = <0>;
-    flavor = "hold-preferred";
-    bindings = <&kp>, <&kp>;
+      compatible = "zmk,behavior-hold-tap";
+      #binding-cells = <2>;
+      tapping-term-ms = <200>;
+      quick-tap-ms = <0>;
+      flavor = "hold-preferred";
+      bindings = <&kp>, <&kp>;
     };
     td_g0: tap_dance_gaming_0 {
       compatible = "zmk,behavior-tap-dance";
@@ -127,14 +129,12 @@ layers = <0>; \
       tapping-term-ms = <200>;
       bindings = <&kp N1>, <&kp N2>, <&kp N3>;
     };
-
     td_mouse0: tap_dance_mouse_0 {
       compatible = "zmk,behavior-tap-dance";
       #binding-cells = <0>;
       tapping-term-ms = <200>;
-      bindings = <&mkp MOUSE_BUTTON_1>, <&mkp MOUSE_BUTTON_2>, <&mkp MOUSE_BUTTON_3>;
+      bindings = <&mkp MB1>, <&mkp MB2>, <&mkp MB3>;
     };
-
   };
 
   keymap {
@@ -153,8 +153,8 @@ layers = <0>; \
       display-name = "Numbers";
       bindings = <
         &kp N1      &kp N2      &kp N3      &kp  N4       &kp N5        &kp N6          &kp N7          &kp N8            &kp N9          &kp N0
-        &sk LSHIFT  &sk LCTRL   &sk LALT    &sk LGUI      &alt_ff       &kp LEFT        &kp DOWN        &kp UP            &kp RIGHT       &mkp MOUSE_SCROLL_UP
-        &kp ESC     &kp CAPS    &kp PSCRN   &kp DEL       &td_mouse0    &mkp MOUSE_MOVE_LEFT  &mkp MOUSE_MOVE_DOWN  &mkp MOUSE_MOVE_UP      &mkp MOUSE_MOVE_RIGHT &mkp MOUSE_SCROLL_DOWN
+        &sk LSHIFT  &sk LCTRL   &sk LALT    &sk LGUI      &alt_ff       &kp LEFT        &kp DOWN        &kp UP            &kp RIGHT       &msc SCRL_UP
+        &kp ESC     &kp CAPS    &kp PSCRN   &kp DEL       &td_mouse0    &mmv MOVE_LEFT  &mmv MOVE_DOWN  &mmv MOVE_UP      &mmv MOVE_RIGHT &msc SCRL_DOWN
         &trans      &trans      &trans      &trans        &trans        &trans
       >;
 
@@ -191,17 +191,17 @@ layers = <0>; \
       display-name = "Keyboard";
       bindings = <
         &bt BT_SEL 1    &bt BT_SEL 2    &bt BT_SEL 3  &bt BT_SEL 4  &bt BT_SEL 5      &kp T   &kp E   &kp S   &kp T   &kp EXCL 
-        &none           &none           &none         &bt BT_PRV    &bt BT_NXT        &kp N1  &kp N2  &kp N3  &kp N4  &kp N5
-        &soft_off       &studio_unlock  &none         &bt BT_CLR    &bt BT_CLR_ALL    &none   &none   &none   &none   &none
+        &bt BT_CLR_ALL  &bt BT_CLR      &none         &bt BT_PRV    &bt BT_NXT        &kp N1  &kp N2  &kp N3  &kp N4  &kp N5
+        &soft_off       &studio_unlock  &none         &none         &none             &none   &none   &none   &none   &none
         &trans          &trans          &trans        &trans        &to 0             &trans
       >;
     };
     single_layer {
       display-name = "Single";
       bindings = <
-        &kp ESC     &spotlight    &kp UP        &win_tab    &ctrl_alt_del       &bt BT_SEL 1  &bt BT_SEL 2  &bt BT_SEL 3  &bt BT_SEL 4  &bt BT_SEL 5
-        &alt_tab    &kp LEFT      &kp DOWN      &kp RIGHT   &kp ENTER           &trans &trans &trans &trans &trans   
-        &kp C_MUTE  &kp C_VOL_DN  &kp C_VOL_UP  &kp BSPC    &kp DEL             &trans &trans &trans &trans &trans 
+        &kp ESC     &spotlight    &kp UP        &win_tab    &ctrl_alt_del       &ctrl_alt_del &win_tab    &kp UP        &spotlight      &kp ESC
+        &alt_tab    &kp LEFT      &kp DOWN      &kp RIGHT   &kp ENTER           &kp ENTER     &kp LEFT    &kp DOWN      &kp RIGHT       &alt_tab  
+        &kp C_MUTE  &kp C_VOL_DN  &kp C_VOL_UP  &kp BSPC    &kp DEL             &kp DEL       &kp BSPC    &kp C_VOL_UP  &kp C_VOL_DN    &kp C_MUTE
         &trans &trans &trans                                                    &trans &trans &trans  
       >;
     };
