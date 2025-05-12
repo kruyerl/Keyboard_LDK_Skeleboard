@@ -131,7 +131,7 @@ combo_##NAME { \
       compatible = "zmk,behavior-tap-dance";
       #binding-cells = <0>;
       tapping-term-ms = <200>;
-      bindings = <&mkp MOUSE_BUTTON_1>, <&mkp MOUSE_BUTTON_2>, <&mkp MOUSE_BUTTON_3>;
+      bindings = <&mkp MOUSE_BUTTON_1 &mkp MOUSE_BUTTON_2 &mkp MOUSE_BUTTON_3>;
     };
   };
 
