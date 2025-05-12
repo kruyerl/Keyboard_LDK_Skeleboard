@@ -4,9 +4,6 @@
 #include <dt-bindings/zmk/pointing.h>
 #include <behaviors/mouse_keys.dtsi>
 
-#define ZMK_POINTING_DEFAULT_MOVE_VAL 1500  // default: 600
-#define ZMK_POINTING_DEFAULT_SCRL_VAL 20    // default: 10
-
 #define COMBO(NAME, BINDINGS, KEYPOS) \
 
 combo_##NAME { \
