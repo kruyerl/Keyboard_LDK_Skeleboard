@@ -1,4 +1,4 @@
-#include "ldk_skeleboard.dtsi"
+#include "ldk_flatboard.dtsi"
 
 &kscan {
     col-gpios = <&pro_micro 18 GPIO_ACTIVE_HIGH>,
