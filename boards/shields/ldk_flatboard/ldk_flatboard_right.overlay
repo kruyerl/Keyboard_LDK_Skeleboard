@@ -1,4 +1,4 @@
-#include "ldk_skeleboard.dtsi"
+#include "ldk_flatboard.dtsi"
 
 &transform {
     col-offset = <5>;
